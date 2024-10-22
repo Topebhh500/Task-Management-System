@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Task Details</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <h1 class="mb-4">Task Details</h1>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title" th:text="${task.title}"></h5>
+                <p class="card-text" th:text="${task.description}"></p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Status: <span th:text="${task.status}"></span></li>
+                    <li class="list-group-item">Due Date: <span th:text="${#temporals.format(task.dueDate, 'yyyy-MM-dd HH:mm')}"></span></li>
+                    <li class="list-group-item">Assigned to: <span th:text="${task.user.name}"></span></li>
+                </ul>
+            </div>
+            <div class="card-footer">
+                <a th:href="@{/tasks/{id}/edit(id=${task.id})}" class="btn btn-warning">Edit</a>
+                <a th:href="@{/tasks/{id}/delete(id=${task.id})}" class="btn btn-danger"
+                   onclick="return confirm('Are you sure you want to delete this task?')">Delete</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
