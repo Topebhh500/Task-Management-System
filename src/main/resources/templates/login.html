@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login - Task Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Login</h3>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/login}" method="post">
+                            <div th:if="${param.error}" class="alert alert-danger">
+                                Invalid username or password.
+                            </div>
+                            <div th:if="${param.logout}" class="alert alert-success">
+                                You have been logged out.
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="username" name="username" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="rememberMe" name="remember-me">
+                                <label class="form-check-label" for="rememberMe">Remember me</label>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary">Login</button>
+                            </div>
+                        </form>
+                        
+                        <div class="text-center mt-3">
+                            <p>Don't have an account? <a th:href="@{/register}">Register here</a></p>
+                        </div>
+                        
+                        <!-- Google OAuth Login -->
+                        <div class="text-center mt-3">
+                            <a href="/oauth2/authorization/google" class="btn btn-outline-danger">
+                                <i class="fab fa-google"></i> Login with Google
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</body>
+</html>
