@@ -1,12 +1,15 @@
 services:
   - type: web
     name: task-management
-    env: docker
+    env: java
+    plan: free
     buildCommand: ./mvnw clean install -DskipTests
     startCommand: java -jar target/*.jar
     envVars:
       - key: SPRING_PROFILES_ACTIVE
         value: prod
+      - key: JAVA_VERSION
+        value: 17
       - key: SPRING_DATASOURCE_URL
         fromDatabase:
           name: task-management-db
@@ -24,3 +27,4 @@ databases:
   - name: task-management-db
     databaseName: taskmanagement
     plan: free
+    ipAllowList: []
