@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: task-management
+    env: docker
+    buildCommand: ./mvnw clean install -DskipTests
+    startCommand: java -jar target/*.jar
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: task-management-db
+          property: connectionString
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: task-management-db
+          property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: task-management-db
+          property: password
+
+databases:
+  - name: task-management-db
+    databaseName: taskmanagement
+    plan: free
