@@ -3,6 +3,6 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 FROM openjdk:21-jdk-slim
-COPY --from=build /target/quizzer-0.0.1-SNAPSHOT.jar quizzer.jar
+COPY --from=build /target/task-management-0.0.1-SNAPSHOT.jar task-management.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","task-management.jar"]
