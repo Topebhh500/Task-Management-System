@@ -72,7 +72,7 @@ Topsite Task Management (TTM) System is a web-based application built with Sprin
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/task-management.git
+git clone https://github.com/Topebhh500/Task-Management-System.git task-management
 cd task-management
 ```
 
