@@ -35,4 +35,9 @@ build/
 ### Application ###
 *.log
 .env
-application-local.properties
+application.properties
+
+# Do NOT ignore these files
+!mvnw
+!mvnw.cmd
+!.mvn/wrapper/maven-wrapper.jar
